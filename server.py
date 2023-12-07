@@ -7,10 +7,13 @@ app = Flask("Sentiment Analyzer")
 def sent_analyzer():
     text_to_analyse = request.args.get('textToAnalyze')
     response = sentiment_analyzer(text_to_analyse)
-    label = response['label'].split('_')[-1]
+    label = response['label']
     score = response['score']
 
-    return f"The given text has been identified as {label} with a score of {score}."
+    if label is None:
+        return "Invalid input! Try again."
+
+    return f"The given text has been identified as {label.split('_')[-1]} with a score of {score}."
 
 @app.route("/")
 def render_index_page():
