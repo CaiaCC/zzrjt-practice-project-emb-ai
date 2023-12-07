@@ -8,8 +8,7 @@ def sentiment_analyzer(text_to_analyse):
 
     response = requests.post(URL, json = INPUT_JSON, headers=HEADER)
     formatted_response = json.loads(response.text)
+    label = formatted_response['documentSentiment']['label']
+    score = formatted_response['documentSentiment']['score']
 
-    return {
-        'label': formatted_response['documentSentiment']['label'],
-        'score': formatted_response['documentSentiment']['score']
-    }
+    return {'label': label, 'score': score}
