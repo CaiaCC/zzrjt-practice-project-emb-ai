@@ -5,7 +5,7 @@ app = Flask("Sentiment Analyzer")
 
 @app.route("/sentimentAnalyzer")
 def sent_analyzer():
-    text_to_analyse = request.args.get('textToAnalyze')
+    text_to_analyze = request.args.get('textToAnalyze')
     if len(text_to_analyze) == 0:
         return "Please enter a text to analyze"
     
